@@ -11,6 +11,10 @@ kisi::kisi(const char *ad,const char *tno)
 	setTelno(tno);
 }
 
+kisi::kisi() {
+
+}
+
 char* kisi::getAd_soyad()  
 {
 	return ad_soyad;

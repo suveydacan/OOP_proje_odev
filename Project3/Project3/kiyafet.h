@@ -5,6 +5,7 @@ class kiyafet
 {
 public:
 	kiyafet(const char*, int, double, const char*, const char*);
+	kiyafet();
 	char* getKategori();
 	void setKategori(const char*);
 	int getKiyafet_adi();
@@ -17,16 +18,10 @@ public:
 	void setRenk(const char*);
 	int len()const;
 	void print()const;
+	/*void setReturnKiyafet(kiyafet);
+	kiyafet getReturnKiyafet();*/
 
 	void kiyafetMenu();
-	
-
-
-	//void printkg();
-
-
-
-
 private:
 	char* kategori;
 	int kiyafet_adi;
@@ -35,18 +30,17 @@ private:
 	char* renk;
 	int slen;
 
-
-
 	const char* elbise;
-	const char*   tisort;
-	const char*  pantolon;
+	const char* tisort;
+	const char* pantolon;
 	const char* gomlek;
-	const char*   etek;
-	const char*  ayakkabi;
-	const char*   satir;
+	const char* etek;
+	const char* ayakkabi;
+	const char* satir;
 
-	int argc;
-	char* argv[];
+	//kiyafet nesne();
 
+	//int argc;
+	//char* argv[];
 };
 

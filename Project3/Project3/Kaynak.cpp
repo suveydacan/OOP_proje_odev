@@ -1,6 +1,9 @@
 ﻿#include <iostream>
 #include <locale.h> //türkçe karakter kullanmak için ekledik.
 #include "kisi.h"
+#include "siparis.h"
+#include "zaman.h"
+#include "kurye.h"
 #include "yonetici.h"
 #include "kullanici.h"
 #include "kiyafet.h"
@@ -22,7 +25,10 @@ void sifreDegistirme();
 int main()
 {
 	setlocale(LC_ALL, "Turkish");
-	
+	kiyafet kiyafet1;
+	siparis siparis1;
+	zaman zaman1;
+	kullanici kullanici1;
 
 	cout << "1. sisteme giriþ" << endl << "2. üye kaydý" << endl<< "3.çýkýþ" << endl;
 
@@ -92,11 +98,13 @@ int main()
 					case 1:
 					{
 
-						kiyafet kiyafet1("kadin", 32, 10.0, "small", "kirmizi");
-						kiyafet1.kiyafetMenu();
+						
+						//kiyafet1.kiyafetMenu();
 					}
 						break;
 					case 2:
+						//siparis1.siparisTakip(kiyafet1.getReturnKiyafet(),kullanici1, zaman1);
+
 						break;
 					case 3:
 						OneriYaz();
@@ -169,7 +177,7 @@ int yoneticiGiris()
 	string veri[LINE][SIZE];
 
 
-	string inFileName = "C:\\Users\\suvey\\OneDrive\\Masaüstü\\kullanýcýlar.txt";
+	string inFileName = "C:\\Users\\zeyne\\OneDrive\\Masaüstü\\kullanıcılar.txt";
 	ifstream inFile;
 	inFile.open(inFileName.c_str());
 
@@ -228,10 +236,10 @@ int musteriGiris()
 {
 	const int LINE = 20;
 	const int SIZE = 7;
-	string veri[LINE][SIZE];
+	char* veri[LINE][SIZE];
 
 
-	string inFileName = "kullanici.txt";
+	string inFileName = "C:\\Users\\zeyne\\OneDrive\\Masaüstü\\kullanicilar.txt";
 	ifstream inFile;
 	inFile.open(inFileName.c_str());
 
@@ -255,6 +263,7 @@ int musteriGiris()
 	string name;
 	string sifre;
 	int bayrak1 = 0, bayrak2 = 0;
+	int line;
 
 	cout << "Kullanýcý Adý : ";  cin >> name; cout << endl;
 	cout << "Þifre : ";  cin >> sifre;
@@ -263,6 +272,7 @@ int musteriGiris()
 	{
 		if (name == veri[i][2])
 		{
+			line = i;
 			bayrak1 = 1;
 		}
 		if (sifre == veri[i][5])
@@ -278,7 +288,8 @@ int musteriGiris()
 	}
 	if (bayrak1 ==1 && bayrak2==1)
 	{
-		cout << "Baþarýlý Giriþ"<<endl;
+		cout << "Başarılı Giriş"<<endl;
+		kullanici nesne(veri[line][0], veri[line][1],veri[line][2], veri[line][3], veri[line][4], veri[line][5], "0", veri[line][6]);
 		return 1;
 	}
 	else
@@ -290,7 +301,7 @@ int musteriGiris()
 }
 void printOneri()
 {
-	ifstream dosyaOku("C:\\Users\\suvey\\OneDrive\\Masaüstü\\öneri.txt");
+	ifstream dosyaOku("C:\\Users\\zeyne\\OneDrive\\Masaüstü\\öneri.txt");
 
 
 	string satir = "";
@@ -315,7 +326,7 @@ void OneriYaz()
 	cout <<"yazdýðýnýz öneri:" << oneri;
 
 
-	ofstream DosyaYazma("C:\\Users\\suvey\\OneDrive\\Masaüstü\\öneri.txt", ios::out | ios::app);
+	ofstream DosyaYazma("C:\\Users\\zeyne\\OneDrive\\Masaüstü\\öneri.txt", ios::out | ios::app);
 	DosyaYazma <<oneri ;
 	DosyaYazma.close();
 
@@ -334,7 +345,7 @@ void sifreDegistirme()
 	string veri[LINE][SIZE];
 
 
-	string inFileName = "C:\\Users\\suvey\\OneDrive\\Masaüstü\\kullanýcýlar.txt";
+	string inFileName = "C:\\Users\\zeyne\\OneDrive\\Masaüstü\\kullanıcılar.txt";
 	ifstream inFile;
 	inFile.open(inFileName.c_str());
 

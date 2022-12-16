@@ -3,6 +3,7 @@ class kisi
 {
 public:
 	kisi(const char*,const char*);
+	kisi();
 	char* getAd_soyad();
 	void setAd_soyad(const char*) ;
 	void setTelno(const char*);

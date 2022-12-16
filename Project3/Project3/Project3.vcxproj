@@ -131,13 +131,19 @@
     <ClCompile Include="kisi.cpp" />
     <ClCompile Include="kiyafet.cpp" />
     <ClCompile Include="kullanici.cpp" />
+    <ClCompile Include="kurye.cpp" />
+    <ClCompile Include="siparis.cpp" />
     <ClCompile Include="yonetici.cpp" />
+    <ClCompile Include="zaman.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="kisi.h" />
     <ClInclude Include="kiyafet.h" />
     <ClInclude Include="kullanici.h" />
+    <ClInclude Include="kurye.h" />
+    <ClInclude Include="siparis.h" />
     <ClInclude Include="yonetici.h" />
+    <ClInclude Include="zaman.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

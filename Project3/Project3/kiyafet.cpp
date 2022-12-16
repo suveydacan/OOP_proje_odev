@@ -3,7 +3,6 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-
 using namespace std;
 kiyafet::kiyafet(const char* category, int kiyafetAdi, double fiyatt, const char* boyutt, const char* renkk) {
 	setKategori(category);
@@ -12,12 +11,74 @@ kiyafet::kiyafet(const char* category, int kiyafetAdi, double fiyatt, const char
 	setBoyut(boyutt);
 	setRenk(renkk);
 
+
+
+}
+kiyafet::kiyafet() {
+
 }
 
+void kiyafet::setKategori(const char* cateegory) {
+	slen = strlen(cateegory);
+	kategori = new char[slen + 1];
+	if (kategori) {
+		strcpy_s(kategori, (slen + 1), cateegory);
+	}
+}
+
+void kiyafet::setKiyafet_adi(int kiyafAdi) {
+	kiyafet_adi = kiyafAdi;
+}
+
+void kiyafet::setFiyat(double fyt) {
+	fiyat = fyt;
+}
+void kiyafet::setBoyut(const char* byt) {
+	slen = strlen(byt);
+	boyut = new char[slen + 1];
+	if (boyut) {
+		strcpy_s(boyut, (slen + 1), byt);
+	}
+}
+
+void kiyafet::setRenk(const char* rnk) {
+	slen = strlen(rnk);
+	renk = new char[slen + 1];
+	if (renk) {
+		strcpy_s(renk, (slen + 1), rnk);
+	}
+}
+
+void kiyafet::print()const {
+	cout << "Kategori: " << kategori << " kiyafet adi: " << kiyafet_adi << " fiyat: " << fiyat << " beden: " << boyut << " renk: " << renk << endl;
+}
+
+int kiyafet::len()const {
+	return slen;
+}
+
+char* kiyafet::getKategori() {
+	return kategori;
+}
+
+int kiyafet::getKiyafet_adi() {
+	return kiyafet_adi;
+}
+double kiyafet::getFiyat() {
+	return fiyat;
+}
+
+char* kiyafet::getBoyut() {
+	return boyut;
+}
+
+char* kiyafet::getRenk() {
+	return renk;
+}
 
 void kiyafet::kiyafetMenu()
 {
-	int secim=-1;
+	int secim = -1;
 	while (secim != 0)
 	{
 
@@ -31,8 +92,8 @@ void kiyafet::kiyafetMenu()
 			elbise = new char[15];
 
 			elbise = "elbise";
-			ofstream myfile1;
-			myfile1.open("kiyafet1.txt", ios::out | ios::app);
+			/*ofstream myfile1;
+			myfile1.open("kiyafet1.txt", ios::out | ios::app);*/
 
 			cout << "------------ elbise --------------\n";
 			cout << "|beden bilgisi: S,M,L,XL,XXL      |\n|renk bilgisi: siyah, mavi, beyaz |\n" << endl;
@@ -66,12 +127,13 @@ void kiyafet::kiyafetMenu()
 				goto renk1;
 			}
 
-			myfile1 << elbise << " " << boyut << "  " << renk << endl;
+			//myfile1 << elbise << " " << boyut << "  " << renk << endl;
 
 			kiyafet kiyafet1(elbise, 32, 10.0, boyut, renk);
+			//setReturnKiyafet(kiyafet1);
 
 
-			myfile1.close();
+			//myfile1.close();
 			//system("PAUSE");
 
 		}
@@ -80,8 +142,8 @@ void kiyafet::kiyafetMenu()
 			tisort = new char[15];
 			tisort = "tisort";
 
-			ofstream myfile1;
-			myfile1.open("kiyafet1.txt", ios::out | ios::app);
+			/*ofstream myfile1;
+			myfile1.open("kiyafet1.txt", ios::out | ios::app);*/
 
 			cout << " ----------- t-shirt -------------\n ";
 			cout << "|beden bilgisi: S,M,L,XL,XXL     |\n |renk bilgisi: siyah, mavi, beyaz, lacivert, gri, kahverengi, bordo |\n" << endl;
@@ -110,19 +172,20 @@ void kiyafet::kiyafetMenu()
 				goto renk2;
 			}
 
-			myfile1 << tisort << " " << boyut << "  " << renk << endl;
+			/*myfile1 << tisort << " " << boyut << "  " << renk << endl;
 
-			myfile1.close();
+			myfile1.close();*/
 
 			kiyafet kiyafet1(tisort, 37, 10.0, boyut, renk);
+			//setReturnKiyafet(kiyafet1);
 
 		}
 		else if (secim == 3) {
 			pantolon = new char[15];
 			pantolon = "pantolon";
 
-			ofstream myfile1;
-			myfile1.open("kiyafet1.txt", ios::out | ios::app);
+			/*ofstream myfile1;
+			myfile1.open("kiyafet1.txt", ios::out | ios::app);*/
 
 			cout << "------------ PANTOLON ------------\n ";
 			cout << "|beden bilgisi: S,M,L,XL,XXL      |\n |renk bilgisi: siyah, mavi, beyaz, kahvrengi |\n" << endl;
@@ -151,18 +214,19 @@ void kiyafet::kiyafetMenu()
 				goto renk3;
 			}
 
-			myfile1 << pantolon << " " << boyut << "  " << renk << endl;
+			/*myfile1 << pantolon << " " << boyut << "  " << renk << endl;
 
-			myfile1.close();
+			myfile1.close();*/
 			kiyafet kiyafet1(pantolon, 36, 10.0, boyut, renk);
-			
+			//setReturnKiyafet(kiyafet1);
+
 		}
 		else if (secim == 4) {
 			gomlek = new char[15];
 			gomlek = "gomlek";
 
-			ofstream myfile1;
-			myfile1.open("kiyafet1.txt", ios::out | ios::app);
+			/*ofstream myfile1;
+			myfile1.open("kiyafet1.txt", ios::out | ios::app);*/
 
 			cout << "-------------- GOMLEK --------------\n ";
 			cout << "|beden bilgisi: S,M,L,XL,XXL      |\n |renk bilgisi: siyah, mavi, beyaz , kahverengi |\n" << endl;
@@ -190,17 +254,18 @@ void kiyafet::kiyafetMenu()
 				goto renk4;
 			}
 
-			myfile1 << gomlek << " " << boyut << "  " << renk << endl;
+			/*myfile1 << gomlek << " " << boyut << "  " << renk << endl;
 
-			myfile1.close();
+			myfile1.close();*/
 			kiyafet kiyafet1(gomlek, 35, 10.0, boyut, renk);
+			//setReturnKiyafet(kiyafet1);
 		}
 		else if (secim == 5) {
 			etek = new char[15];
 			etek = "etek";
 
-			ofstream myfile1;
-			myfile1.open("kiyafet1.txt", ios::out | ios::app);
+			/*ofstream myfile1;
+			myfile1.open("kiyafet1.txt", ios::out | ios::app);*/
 
 			cout << "--------------- ETEK ---------------\n ";
 			cout << "|beden bilgisi: S,M,L,XL,XXL      |\n |renk bilgisi: siyah, mavi, beyaz |\n" << endl;
@@ -227,18 +292,19 @@ void kiyafet::kiyafetMenu()
 				goto renk5;
 			}
 
-			myfile1 << etek << " " << boyut << "  " << renk << endl;
+			/*myfile1 << etek << " " << boyut << "  " << renk << endl;
 
-			myfile1.close();
+			myfile1.close();*/
 			kiyafet kiyafet1(etek, 34, 10.0, boyut, renk);
+			//setReturnKiyafet(kiyafet1);
 
 		}
 		else if (secim == 6) {
 			ayakkabi = new char[15];
 			ayakkabi = "ayakkabi";
 
-			ofstream myfile1;
-			myfile1.open("kiyafet1.txt", ios::out | ios::app);
+			/*ofstream myfile1;
+			myfile1.open("kiyafet1.txt", ios::out | ios::app);*/
 
 			cout << "------------  AYAKKABI -------------\n ";
 			cout << "|beden bilgisi: 36,37,38,39,40      |\n |renk bilgisi: siyah, mavi, beyaz |\n" << endl;
@@ -266,106 +332,26 @@ void kiyafet::kiyafetMenu()
 				goto renk6;
 			}
 
-			myfile1 << ayakkabi << " " << boyut << "  " << renk << endl;
+			/*myfile1 << ayakkabi << " " << boyut << "  " << renk << endl;
 
 			myfile1.close();
-			system("PAUSE");
+			system("PAUSE");*/
 			kiyafet kiyafet1(ayakkabi, 33, 10.0, boyut, renk);
+			//setReturnKiyafet(kiyafet1);
 		}
-
-		/*else
-		{
-
-			cout << "FATURALANDIRMA..." << endl;
-
-
-
-			ifstream ifs;
-
-			ifs.open("kiyafet1.txt", ifstream::in);
-
-			char line[80];
-			char* point;
-
-			while (ifs.getline(line, 80))
-			{
-				cout << "line =" << line << endl;
-
-			}
-
-			ifs.close();
-
-		}*/
-
-
+		
+		
+		
 	}
 
 
 }
-
-
-
-
-
-void kiyafet::setKategori(const char* cateegory) {
-	slen = strlen(cateegory);
-	kategori = new char[slen + 1];
-	if (kategori) {
-		strcpy_s(kategori, (slen + 1), cateegory);
-	}
-}
-
-void kiyafet::setKiyafet_adi(int kiyafAdi) {
-	kiyafet_adi = kiyafAdi;
-}
-
-void kiyafet::setFiyat(double fyt) {
-	fiyat = fyt;
-}
-void kiyafet::setBoyut(const char* byt) {
-	slen = strlen(byt);
-	boyut = new char[slen + 1];
-	if (boyut) {
-		strcpy_s(boyut, (slen + 1), byt);
-	}
-}
-void kiyafet::setRenk(const char* rnk) {
-	slen = strlen(rnk);
-	renk = new char[slen + 1];
-	if (renk) {
-		strcpy_s(renk, (slen + 1), rnk);
-	}
-}
-
-void kiyafet::print()const {
-	cout << "Kategori: " << kategori << " kiyafet adi: " << kiyafet_adi << " fiyat: " << fiyat <<" TL " << " beden: " << boyut << " renk: " << renk << endl;
-}
-
-int kiyafet::len()const {
-	return slen;
-}
-
-char* kiyafet::getKategori() {
-	return kategori;
-}
-
-int kiyafet::getKiyafet_adi() {
-	return kiyafet_adi;
-}
-double kiyafet::getFiyat() {
-	return fiyat;
-}
-
-char* kiyafet::getBoyut() {
-	return boyut;
-}
-
-char* kiyafet::getRenk() {
-	return renk;
-}
-
-
-
-
-
+//void kiyafet::setReturnKiyafet(kiyafet kiyaf) {
+//	kiyafet nesne = kiyaf;
+//
+//}
+//
+//kiyafet kiyafet::getReturnKiyafet() {
+//	return nesne();
+//}
 

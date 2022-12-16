@@ -5,8 +5,9 @@ class kullanici :
 {
    public:
        kullanici(const char*,const char*, const char*, const char*, const char*, const char*, const char* ,const char*);
-       void setKullanýcý_ad(const char*);
-       char* getKullanýcý_ad();
+       kullanici();
+       void setKullanici_ad(const char*);
+       char* getKullanici_ad();
        void setEposta(const char*);
        char* getEposta();
        void setAdres_ilce(const char*);

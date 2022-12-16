@@ -12,19 +12,22 @@ using namespace std;
 kullanici::kullanici(const char* k_adSoyad,const char* k_tno,const char* k_ad,
 	const char* k_email,const char* k_adres,const char* k_sfr,const char* k_kupon,const char* k_tarih) :kisi(k_adSoyad,k_tno)
 {
-	setKullanýcý_ad(k_ad);
+	setKullanici_ad(k_ad);
 	setEposta(k_email);
 	setAdres_ilce(k_adres);
 	setK_Sifre(k_sfr);
 	setKupon(k_kupon);
 	setTarih(k_tarih);
      
-	ofstream yazmaDosyasi("kullanici.txt",ios::out|ios::app);
+	ofstream yazmaDosyasi("C:\\Users\\zeyne\\OneDrive\\Masaüstü\\kullanicilar.txt",ios::out|ios::app);
 	yazmaDosyasi << k_adSoyad << " " <<k_tno<<" "<<k_ad<<" "<<k_email<<" "<<k_adres<<" "<<k_sfr<<" "<<k_tarih<< endl;
 	yazmaDosyasi.close();
 }
+kullanici::kullanici():kisi() {
 
-void kullanici::setKullanýcý_ad(const char* kl_ad)
+}
+
+void kullanici::setKullanici_ad(const char* kl_ad)
 {
 	slen = strlen(kl_ad);
 	kullanici_ad = new char[slen + 1];
@@ -33,7 +36,7 @@ void kullanici::setKullanýcý_ad(const char* kl_ad)
 	}
 
 }
-char* kullanici::getKullanýcý_ad()
+char* kullanici::getKullanici_ad()
 {
 	return kullanici_ad;
 }
