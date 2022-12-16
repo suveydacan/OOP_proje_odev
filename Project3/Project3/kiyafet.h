@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+#include <string.h>
 class kiyafet
 {
 public:
@@ -16,6 +18,13 @@ public:
 	int len()const;
 	void print()const;
 
+	void kiyafetMenu();
+	
+
+
+	//void printkg();
+
+
 
 
 private:
@@ -25,5 +34,19 @@ private:
 	char* boyut;
 	char* renk;
 	int slen;
+
+
+
+	const char* elbise;
+	const char*   tisort;
+	const char*  pantolon;
+	const char* gomlek;
+	const char*   etek;
+	const char*  ayakkabi;
+	const char*   satir;
+
+	int argc;
+	char* argv[];
+
 };
 
