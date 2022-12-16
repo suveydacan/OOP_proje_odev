@@ -16,8 +16,8 @@ void yonetici::setSifre(const char* y_sfr)
 		strcpy_s(sifre, (slen + 1), y_sfr);
 	}
 }
-char yonetici::getSifre()
+char* yonetici::getSifre()
 {
-	return *sifre;
+	return sifre;
 
 }

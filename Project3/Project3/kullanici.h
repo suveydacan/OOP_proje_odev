@@ -6,17 +6,17 @@ class kullanici :
    public:
        kullanici(const char*,const char*, const char*, const char*, const char*, const char*, const char* ,const char*);
        void setKullanýcý_ad(const char*);
-       char getKullanýcý_ad();
+       char* getKullanýcý_ad();
        void setEposta(const char*);
-       char getEposta();
+       char* getEposta();
        void setAdres_ilce(const char*);
-       char getAdres_ilce();
+       char* getAdres_ilce();
        void setK_Sifre(const char*);
-       char getK_Sifre();
+       char* getK_Sifre();
        void setKupon(const char*);
-       char getKupon();
+       char* getKupon();
        void setTarih(const char*);
-       char getTarih();
+       char* getTarih();
       
    private:
        char* kullanici_ad;

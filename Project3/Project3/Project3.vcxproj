@@ -129,11 +129,13 @@
   <ItemGroup>
     <ClCompile Include="Kaynak.cpp" />
     <ClCompile Include="kisi.cpp" />
+    <ClCompile Include="kiyafet.cpp" />
     <ClCompile Include="kullanici.cpp" />
     <ClCompile Include="yonetici.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="kisi.h" />
+    <ClInclude Include="kiyafet.h" />
     <ClInclude Include="kullanici.h" />
     <ClInclude Include="yonetici.h" />
   </ItemGroup>

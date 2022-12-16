@@ -3,10 +3,10 @@ class kisi
 {
 public:
 	kisi(const char*,const char*);
-	char getAd_soyad();
+	char* getAd_soyad();
 	void setAd_soyad(const char*) ;
 	void setTelno(const char*);
-	char getTelno();
+	char* getTelno();
 	int len()const;
 	void print();
 private:

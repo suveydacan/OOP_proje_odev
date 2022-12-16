@@ -5,8 +5,8 @@ class yonetici :
 {
     public:
         yonetici(const char*, const char*, const char*);
-        char getSifre();
-        void setSifre(const char* sfr);
+        char* getSifre();
+        void setSifre(const char* );
        
     private:
         char* sifre;

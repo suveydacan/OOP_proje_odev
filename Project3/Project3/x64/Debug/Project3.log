@@ -1,2 +1,5 @@
-﻿  Kaynak.cpp
-  Project3.vcxproj -> C:\Users\suvey\OneDrive\Masaüstü\data structures alıştırma\Project3\x64\Debug\Project3.exe
+﻿  kiyafet.cpp
+C:\Users\zeyne\OneDrive\Masaüstü\OOP_proje_odev\Project3\Project3\kiyafet.cpp(17,26): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\zeyne\OneDrive\Masaüstü\OOP_proje_odev\Project3\Project3\kiyafet.cpp(32,20): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\zeyne\OneDrive\Masaüstü\OOP_proje_odev\Project3\Project3\kiyafet.cpp(39,20): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  Project3.vcxproj -> C:\Users\zeyne\OneDrive\Masaüstü\OOP_proje_odev\Project3\x64\Debug\Project3.exe

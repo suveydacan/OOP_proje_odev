@@ -33,9 +33,9 @@ void kullanici::setKullanýcý_ad(const char* kl_ad)
 	}
 
 }
-char kullanici::getKullanýcý_ad()
+char* kullanici::getKullanýcý_ad()
 {
-	return *kullanici_ad;
+	return kullanici_ad;
 }
 void kullanici::setEposta(const char* kullanici_email)
 {
@@ -56,9 +56,9 @@ void kullanici::setEposta(const char* kullanici_email)
 
 	
 }
-char kullanici::getEposta()
+char* kullanici::getEposta()
 {
-	return *eposta;
+	return eposta;
 }
 void kullanici::setAdres_ilce(const char* kullanici_adres)
 {
@@ -69,9 +69,9 @@ void kullanici::setAdres_ilce(const char* kullanici_adres)
 	}
 
 }
-char kullanici::getAdres_ilce()
+char* kullanici::getAdres_ilce()
 {
-	return *adres_ilce;
+	return adres_ilce;
 }
 void kullanici::setK_Sifre(const char* kullanici_sfr)
 {
@@ -108,9 +108,9 @@ void kullanici::setK_Sifre(const char* kullanici_sfr)
 	}
 
 }
-char kullanici::getK_Sifre()
+char* kullanici::getK_Sifre()
 {
-	return *k_sifre;
+	return k_sifre;
 }
 void kullanici::setKupon(const char* kullanici_kupon)
 {
@@ -121,9 +121,9 @@ void kullanici::setKupon(const char* kullanici_kupon)
 	}
 
 }
-char kullanici::getKupon()
+char* kullanici::getKupon()
 {
-	return *indirim_kodu;
+	return indirim_kodu;
 }
 void kullanici::setTarih(const char* dTarih)
 {
@@ -144,9 +144,9 @@ void kullanici::setTarih(const char* dTarih)
 	}
 	
 }
-char kullanici::getTarih()
+char* kullanici::getTarih()
 {
-	return *dtarihi;
+	return dtarihi;
 }
 
 

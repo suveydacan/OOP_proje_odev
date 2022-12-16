@@ -11,9 +11,9 @@ kisi::kisi(const char *ad,const char *tno)
 	setTelno(tno);
 }
 
-char kisi::getAd_soyad()  
+char* kisi::getAd_soyad()  
 {
-	return *ad_soyad;
+	return ad_soyad;
 }
 void kisi::setAd_soyad(const char *a_s) 
 {
@@ -33,9 +33,9 @@ void kisi::setTelno(const char* tln)
 	}
 }
 
-char kisi::getTelno() 
+char* kisi::getTelno() 
 {
-	return *telno;
+	return telno;
 }
 void kisi::print()
 {
