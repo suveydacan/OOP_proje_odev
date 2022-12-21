@@ -10,7 +10,8 @@
 #include <string>
 #include <string.h>
 #include <fstream>
- 
+#include <conio.h> 
+
 
 using namespace std;
 
@@ -29,13 +30,15 @@ int main()
 	siparis siparis1;
 	zaman zaman1;
 	kullanici kullanici1;
-
-	cout << "1. sisteme giriþ" << endl << "2. üye kaydý" << endl<< "3.çýkýþ" << endl;
+	geri1:
+	cout << "1. sisteme giriþ" << endl << "2. üye kaydý" << endl<< "3. çýkýþ" << endl;
 
 	int number;
 	cin >> number;
 	switch (number) {
 	case 1:
+	    geri2:
+		geri3:
 		cout << "1. yönetici giriþi" << endl << "2. müþteri giriþi" << endl << "3.Geri" << endl;
 		int num;
 		cin >> num;
@@ -68,7 +71,9 @@ int main()
 						break;
 					case 5:
 						break;
-
+					case 6:
+						goto geri3;
+						break;
 					default:
 						break;
 					}
@@ -85,8 +90,9 @@ int main()
 				switch(n){
 				case 0:
 				{
+					case2:
 					cout << "Kullanýcý adý veya þifre hatalý.Tekrar Deneyiniz!" << endl;
-					musteriGiris();
+					goto case2;
 					break;
 				}
 				case 1:
@@ -97,7 +103,8 @@ int main()
 					switch (num){
 					case 1:
 					{
-
+						kiyafet kiyafet1("kadin", 32, 10.0, "small", "kirmizi");
+						kiyafet1.kiyafetMenu();
 						
 						//kiyafet1.kiyafetMenu();
 					}
@@ -113,6 +120,7 @@ int main()
 						sifreDegistirme();
 						break;
 					case 5:
+						goto geri2;
 						break;
 					default:
 						break;
@@ -123,8 +131,8 @@ int main()
 				break;
 			}
 			case 3:
-				exit(1);
-                break; //koddan çýkýþ yapýlýyor ama bir önceki menüye dönmesi gerek.
+				goto geri1;
+                break; 
 			
 		}
 		break;
@@ -162,10 +170,25 @@ void uyeKaydýFormu()
 	cout << "kullanýcý adý: " << endl; cin >> k_nickname;
 	cout << "email: " << endl; cin >> k_mail;
 	cout << "adres: " << endl; cin >> k_adres;
-	cout << "þifre: " << endl; cin >> sfr;
-	cout << "doðum tarihi(gg/aa/yyyy formatýnda giriniz): " << endl; cin >>dt;
+	cout << "þifre: " << endl; 
+	string sifre;
+	int ch;
+	ch = _getch();
+	while (ch != 13)
+	{
+		sifre.push_back(ch);
+		cout << '*';
+		ch = _getch();
+	}
+    cout << endl;
 
-  kullanici nesne(k_ad, k_tno,k_nickname,k_mail,k_adres,sfr,"0", dt);
+	char* _sfr = new char[sifre.length() + 1];
+	strcpy_s(_sfr, sifre.size() + 1, sifre.c_str());
+	// do stuff
+
+	cout << "\ndoðum tarihi(gg/aa/yyyy formatýnda giriniz): " << endl; cin >>dt;
+
+  kullanici nesne(k_ad, k_tno,k_nickname,k_mail,k_adres,_sfr,"0", dt);
 	
    
 
@@ -177,7 +200,7 @@ int yoneticiGiris()
 	string veri[LINE][SIZE];
 
 
-	string inFileName = "C:\\Users\\zeyne\\OneDrive\\Masaüstü\\kullanıcılar.txt";
+	string inFileName = "kullanici.txt";
 	ifstream inFile;
 	inFile.open(inFileName.c_str());
 
@@ -203,7 +226,16 @@ int yoneticiGiris()
 	int bayrak1 = 0,bayrak2=0;
 
 	cout << "Ad-Soyad :"; cin >> adSoyad; cout << endl;
-	cout << "Þifre :"; cin >> sifre; 
+	cout << "Þifre :"; 
+	int ch;
+	ch = _getch();
+	while (ch != 13)
+	{
+		sifre.push_back(ch);
+		cout << '*';
+		ch = _getch();
+	}
+	cout << endl;
 
 	for (int i = 0; i < LINE; i++)
 	{
@@ -236,10 +268,10 @@ int musteriGiris()
 {
 	const int LINE = 20;
 	const int SIZE = 7;
-	char* veri[LINE][SIZE];
+	string veri[LINE][SIZE];
 
 
-	string inFileName = "C:\\Users\\zeyne\\OneDrive\\Masaüstü\\kullanicilar.txt";
+	string inFileName = "kullanici.txt";
 	ifstream inFile;
 	inFile.open(inFileName.c_str());
 
@@ -266,7 +298,16 @@ int musteriGiris()
 	int line;
 
 	cout << "Kullanýcý Adý : ";  cin >> name; cout << endl;
-	cout << "Þifre : ";  cin >> sifre;
+	cout << "Þifre : ";  
+	int ch;
+	ch = _getch();
+	while (ch != 13)
+	{
+		sifre.push_back(ch);
+		cout << '*';
+		ch = _getch();
+	}
+	cout << endl;
 
 	for (int i = 0; i < LINE; i++)
 	{
@@ -289,7 +330,7 @@ int musteriGiris()
 	if (bayrak1 ==1 && bayrak2==1)
 	{
 		cout << "Başarılı Giriş"<<endl;
-		kullanici nesne(veri[line][0], veri[line][1],veri[line][2], veri[line][3], veri[line][4], veri[line][5], "0", veri[line][6]);
+	//	kullanici nesne(veri[line][0], veri[line][1],veri[line][2], veri[line][3], veri[line][4], veri[line][5], "0", veri[line][6]);
 		return 1;
 	}
 	else
@@ -301,7 +342,7 @@ int musteriGiris()
 }
 void printOneri()
 {
-	ifstream dosyaOku("C:\\Users\\zeyne\\OneDrive\\Masaüstü\\öneri.txt");
+	ifstream dosyaOku("oneri.txt");
 
 
 	string satir = "";
@@ -326,7 +367,7 @@ void OneriYaz()
 	cout <<"yazdýðýnýz öneri:" << oneri;
 
 
-	ofstream DosyaYazma("C:\\Users\\zeyne\\OneDrive\\Masaüstü\\öneri.txt", ios::out | ios::app);
+	ofstream DosyaYazma("oneri.txt", ios::out | ios::app);
 	DosyaYazma <<oneri ;
 	DosyaYazma.close();
 
@@ -345,7 +386,7 @@ void sifreDegistirme()
 	string veri[LINE][SIZE];
 
 
-	string inFileName = "C:\\Users\\zeyne\\OneDrive\\Masaüstü\\kullanıcılar.txt";
+	string inFileName = "kullanici.txt";
 	ifstream inFile;
 	inFile.open(inFileName.c_str());
 
@@ -386,7 +427,15 @@ void sifreDegistirme()
 
 	cout << "Yeni þifrenizi giriniz: "<<endl;
 	string yeniSifre = "";
-	cin >> yeniSifre;
+	int ch;
+	ch = _getch();
+	while (ch != 13)
+	{
+		yeniSifre.push_back(ch);
+		cout << '*';
+		ch = _getch();
+	}
+	cout << endl;
 	
 	veri[line][5] = yeniSifre;
 

@@ -19,7 +19,7 @@ kullanici::kullanici(const char* k_adSoyad,const char* k_tno,const char* k_ad,
 	setKupon(k_kupon);
 	setTarih(k_tarih);
      
-	ofstream yazmaDosyasi("C:\\Users\\zeyne\\OneDrive\\Masaüstü\\kullanicilar.txt",ios::out|ios::app);
+	ofstream yazmaDosyasi("kullanici.txt" ,ios::out|ios::app);
 	yazmaDosyasi << k_adSoyad << " " <<k_tno<<" "<<k_ad<<" "<<k_email<<" "<<k_adres<<" "<<k_sfr<<" "<<k_tarih<< endl;
 	yazmaDosyasi.close();
 }
