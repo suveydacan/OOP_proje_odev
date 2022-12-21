@@ -11,8 +11,10 @@ kiyafet::kiyafet(const char* category, int kiyafetAdi, double fiyatt, const char
 	setBoyut(boyutt);
 	setRenk(renkk);
 
-
-
+	ofstream myfile1;
+			myfile1.open("kiyafet1.txt", ios::out | ios::app);
+			myfile1 << category << " " << boyutt << "  " << renkk << endl;
+			myfile1.close();
 }
 kiyafet::kiyafet() {
 
@@ -340,7 +342,36 @@ void kiyafet::kiyafetMenu()
 			//setReturnKiyafet(kiyafet1);
 		}
 		
-		
+
+		else
+		{
+
+			cout << "FATURALANDIRMA..." << endl;
+
+
+
+			string array[1000];
+			short loop = 1;
+			string line;
+			ifstream myfile("kiyafet1.txt");
+			if (myfile.is_open())
+			{
+				while (!myfile.eof())
+				{
+					getline(myfile, line);
+					array[loop] = line;
+					cout << "ID:" << loop << " " << array[loop] << endl;
+					loop++;
+				}
+
+				myfile.close();
+				remove("kiyafet1.txt");
+			}
+			else cout << "can't open the file";
+			system("PAUSE");
+
+
+		}
 		
 	}
 

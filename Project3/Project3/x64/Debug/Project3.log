@@ -1,17 +1,5 @@
-﻿  Kaynak.cpp
-C:\Users\zeyne\OneDrive\Masaüstü\OOP_proje_odev\Project3\Project3\Kaynak.cpp(180,22): warning C4566: character represented by universal-character-name '\u0131' cannot be represented in the current code page (1252)
-C:\Users\zeyne\OneDrive\Masaüstü\OOP_proje_odev\Project3\Project3\Kaynak.cpp(291,11): warning C4566: character represented by universal-character-name '\u015F' cannot be represented in the current code page (1252)
-C:\Users\zeyne\OneDrive\Masaüstü\OOP_proje_odev\Project3\Project3\Kaynak.cpp(291,11): warning C4566: character represented by universal-character-name '\u0131' cannot be represented in the current code page (1252)
-C:\Users\zeyne\OneDrive\Masaüstü\OOP_proje_odev\Project3\Project3\Kaynak.cpp(348,22): warning C4566: character represented by universal-character-name '\u0131' cannot be represented in the current code page (1252)
-  kiyafet.cpp
-C:\Users\zeyne\OneDrive\Masaüstü\OOP_proje_odev\Project3\Project3\kiyafet.cpp(22,26): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\zeyne\OneDrive\Masaüstü\OOP_proje_odev\Project3\Project3\kiyafet.cpp(37,20): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\zeyne\OneDrive\Masaüstü\OOP_proje_odev\Project3\Project3\kiyafet.cpp(45,20): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-  kurye.cpp
-C:\Users\zeyne\OneDrive\Masaüstü\OOP_proje_odev\Project3\Project3\kurye.cpp(13,25): warning C4552: '<=': result of expression not used
-  siparis.cpp
-C:\Users\zeyne\OneDrive\Masaüstü\OOP_proje_odev\Project3\Project3\siparis.cpp(117,12): warning C4566: character represented by universal-character-name '\u0131' cannot be represented in the current code page (1252)
-C:\Users\zeyne\OneDrive\Masaüstü\OOP_proje_odev\Project3\Project3\siparis.cpp(117,12): warning C4566: character represented by universal-character-name '\u011F' cannot be represented in the current code page (1252)
-  zaman.cpp
-  Generating Code...
-  Project3.vcxproj -> C:\Users\zeyne\OneDrive\Masaüstü\OOP_proje_odev\Project3\x64\Debug\Project3.exe
+﻿  kiyafet.cpp
+D:\zoom\OOP_proje_odev\Project3\Project3\kiyafet.cpp(24,26): warning C4267: '=': 'size_t' - 'int' dönüşümü; veri kaybı olabilir
+D:\zoom\OOP_proje_odev\Project3\Project3\kiyafet.cpp(39,20): warning C4267: '=': 'size_t' - 'int' dönüşümü; veri kaybı olabilir
+D:\zoom\OOP_proje_odev\Project3\Project3\kiyafet.cpp(47,20): warning C4267: '=': 'size_t' - 'int' dönüşümü; veri kaybı olabilir
+  Project3.vcxproj -> D:\zoom\OOP_proje_odev\Project3\x64\Debug\Project3.exe
