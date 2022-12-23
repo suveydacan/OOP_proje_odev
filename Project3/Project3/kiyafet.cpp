@@ -1,9 +1,13 @@
-#include "kiyafet.h"
+﻿#include "kiyafet.h"
 #include <string.h>
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <string>
+#include <stdlib.h>
+
 using namespace std;
+
 kiyafet::kiyafet(const char* category, int kiyafetAdi, double fiyatt, const char* boyutt, const char* renkk) {
 	setKategori(category);
 	setKiyafet_adi(kiyafetAdi);
@@ -12,8 +16,8 @@ kiyafet::kiyafet(const char* category, int kiyafetAdi, double fiyatt, const char
 	setRenk(renkk);
 
 	ofstream myfile1;
-			myfile1.open("kiyafet1.txt", ios::out | ios::app);
-			myfile1 << category << " " << boyutt << "  " << renkk << endl;
+			myfile1.open("C:\\Users\\zeyne\\OneDrive\\Masaüstü\\kiyafet1.txt", ios::out | ios::app);
+			myfile1 << category << " " << boyutt << "  " << renkk <<" "<< fiyatt << endl;
 			myfile1.close();
 }
 kiyafet::kiyafet() {
@@ -50,9 +54,12 @@ void kiyafet::setRenk(const char* rnk) {
 		strcpy_s(renk, (slen + 1), rnk);
 	}
 }
-
+string arraytemp[10];
 void kiyafet::print()const {
-	cout << "Kategori: " << kategori << " kiyafet adi: " << kiyafet_adi << " fiyat: " << fiyat << " beden: " << boyut << " renk: " << renk << endl;
+	for (int i = 0; i < 10; i++) {
+		cout << arraytemp[i] << endl;
+	}
+	cout << "Toplam siparis tutariniz: " << toplamFiyat <<" TL" << endl;
 }
 
 int kiyafet::len()const {
@@ -78,311 +85,192 @@ char* kiyafet::getRenk() {
 	return renk;
 }
 
-void kiyafet::kiyafetMenu()
+void kiyafet::kiyafetMenu(kullanici kullanan)
 {
 	int secim = -1;
 	while (secim != 0)
 	{
+		menu:
+		cout << "Urun secimi yapiniz." << endl;
+		string satir;
 
+		ifstream okumaDosyasi("C:\\Users\\zeyne\\OneDrive\\Masaüstü\\kategori.txt");
+		if (okumaDosyasi.is_open())
+		{
+			while (!okumaDosyasi.eof())
+			{
+				getline(okumaDosyasi, satir);
+				cout << satir << endl;
 
-
-		cout << "kiyafet kategorileri menusu:\n1-) elbise\n2-) tisort\n3-) pantolon\n4-) gomlek\n5-) etek\n6-) ayakkabi\n0-) cikis\n\n katagori seciniz: " << endl;
-		cin >> secim;
-
-		if (secim == 1) {
-
-			elbise = new char[15];
-
-			elbise = "elbise";
-			/*ofstream myfile1;
-			myfile1.open("kiyafet1.txt", ios::out | ios::app);*/
-
-			cout << "------------ elbise --------------\n";
-			cout << "|beden bilgisi: S,M,L,XL,XXL      |\n|renk bilgisi: siyah, mavi, beyaz |\n" << endl;
-
-
-
-		beden1:
-
-			cout << "elbise bedenini seciniz:" << endl;
-
-			cin >> boyut;
-			stringstream aa;
-			aa << boyut;
-			string a;
-			aa >> a;
-			if (a != "s" && a != "m" && a != "l" && a != "xl" && a != "xxl" && a != "S" && a != "M" && a != "L" && a != "XL" && a != "XXL") {
-				cout << boyut << " bedenine ait urun stogu mevcut degil.." << endl;
-				goto beden1;
 			}
 
-		renk1:
-
-			cout << "elbise rengini seciniz: " << endl;
-			cin >> renk;
-			stringstream ss;
-			ss << renk;
-			string s;
-			ss >> s;
-			if (s != "siyah" && s != "mavi" && s != "beyaz") {
-				cout << renk << " rengine ait urun stogu mevcut degil.." << endl;
-				goto renk1;
-			}
-
-			//myfile1 << elbise << " " << boyut << "  " << renk << endl;
-
-			kiyafet kiyafet1(elbise, 32, 10.0, boyut, renk);
-			//setReturnKiyafet(kiyafet1);
-
-
-			//myfile1.close();
-			//system("PAUSE");
+			okumaDosyasi.close();
 
 		}
-		else if (secim == 2) {
 
-			tisort = new char[15];
-			tisort = "tisort";
-
-			/*ofstream myfile1;
-			myfile1.open("kiyafet1.txt", ios::out | ios::app);*/
-
-			cout << " ----------- t-shirt -------------\n ";
-			cout << "|beden bilgisi: S,M,L,XL,XXL     |\n |renk bilgisi: siyah, mavi, beyaz, lacivert, gri, kahverengi, bordo |\n" << endl;
-
-		beden2:
-			cout << "t-shirt bedenini seciniz:" << endl;
-			cin >> boyut;
-			stringstream aa;
-			aa << boyut;
-			string a;
-			aa >> a;
-			if (a != "s" && a != "m" && a != "l" && a != "xl" && a != "xxl" && a != "S" && a != "M" && a != "L" && a != "XL" && a != "XXL") {
-				cout << boyut << " bedenine ait urun stogu mevcut degil.." << endl;
-				goto beden2;
-			}
-		renk2:
-
-			cout << "t-shirt rengini seciniz:" << endl;
-			cin >> renk;
-			stringstream ss;
-			ss << renk;
-			string s;
-			ss >> s;
-			if (s != "siyah" && s != "mavi" && s != "beyaz" && s != "kahverengi" && s != "gri" && s != "lacivert" && s != "bordo") {
-				cout << renk << " rengine ait urun stogu mevcut degil.." << endl;
-				goto renk2;
-			}
-
-			/*myfile1 << tisort << " " << boyut << "  " << renk << endl;
-
-			myfile1.close();*/
-
-			kiyafet kiyafet1(tisort, 37, 10.0, boyut, renk);
-			//setReturnKiyafet(kiyafet1);
-
-		}
-		else if (secim == 3) {
-			pantolon = new char[15];
-			pantolon = "pantolon";
-
-			/*ofstream myfile1;
-			myfile1.open("kiyafet1.txt", ios::out | ios::app);*/
-
-			cout << "------------ PANTOLON ------------\n ";
-			cout << "|beden bilgisi: S,M,L,XL,XXL      |\n |renk bilgisi: siyah, mavi, beyaz, kahvrengi |\n" << endl;
-
-		beden3:
-
-			cout << "Pantolon bedenini seciniz:" << endl;
-			cin >> boyut;
-			stringstream aa;
-			aa << boyut;
-			string a;
-			aa >> a;
-			if (a != "s" && a != "m" && a != "l" && a != "xl" && a != "xxl" && a != "S" && a != "M" && a != "L" && a != "XL" && a != "XXL") {
-				cout << boyut << " bedenine ait urun stogu mevcut degil.." << endl;
-				goto beden3;
-			}
-		renk3:
-			cout << "pantolon rengini seciniz:" << endl;
-			cin >> renk;
-			stringstream ss;
-			ss << renk;
-			string s;
-			ss >> s;
-			if (s != "siyah" && s != "mavi" && s != "beyaz" && s != "kahverengi") {
-				cout << renk << " rengine ait urun stogu mevcut degil.." << endl;
-				goto renk3;
-			}
-
-			/*myfile1 << pantolon << " " << boyut << "  " << renk << endl;
-
-			myfile1.close();*/
-			kiyafet kiyafet1(pantolon, 36, 10.0, boyut, renk);
-			//setReturnKiyafet(kiyafet1);
-
-		}
-		else if (secim == 4) {
-			gomlek = new char[15];
-			gomlek = "gomlek";
-
-			/*ofstream myfile1;
-			myfile1.open("kiyafet1.txt", ios::out | ios::app);*/
-
-			cout << "-------------- GOMLEK --------------\n ";
-			cout << "|beden bilgisi: S,M,L,XL,XXL      |\n |renk bilgisi: siyah, mavi, beyaz , kahverengi |\n" << endl;
-		beden4:
-			cout << "gomlek bedenini seciniz:" << endl;
-			cin >> boyut;
-			stringstream aa;
-			aa << boyut;
-			string a;
-			aa >> a;
-			if (a != "s" && a != "m" && a != "l" && a != "xl" && a != "xxl" && a != "S" && a != "M" && a != "L" && a != "XL" && a != "XXL") {
-				cout << boyut << " bedenine ait urun stogu mevcut degil.." << endl;
-				goto beden4;
-			}
-
-		renk4:
-			cout << "gomlek rengini seciniz:" << endl;
-			cin >> renk;
-			stringstream ss;
-			ss << renk;
-			string s;
-			ss >> s;
-			if (s != "siyah" && s != "mavi" && s != "beyaz" && s != "kahverengi") {
-				cout << renk << " rengine ait urun stogu mevcut degil.." << endl;
-				goto renk4;
-			}
-
-			/*myfile1 << gomlek << " " << boyut << "  " << renk << endl;
-
-			myfile1.close();*/
-			kiyafet kiyafet1(gomlek, 35, 10.0, boyut, renk);
-			//setReturnKiyafet(kiyafet1);
-		}
-		else if (secim == 5) {
-			etek = new char[15];
-			etek = "etek";
-
-			/*ofstream myfile1;
-			myfile1.open("kiyafet1.txt", ios::out | ios::app);*/
-
-			cout << "--------------- ETEK ---------------\n ";
-			cout << "|beden bilgisi: S,M,L,XL,XXL      |\n |renk bilgisi: siyah, mavi, beyaz |\n" << endl;
-		beden5:
-			cout << "etek bedenini seciniz:" << endl;
-			cin >> boyut;
-			stringstream aa;
-			aa << boyut;
-			string a;
-			aa >> a;
-			if (a != "s" && a != "m" && a != "l" && a != "xl" && a != "xxl" && a != "S" && a != "M" && a != "L" && a != "XL" && a != "XXL") {
-				cout << boyut << " bedenine ait urun stogu mevcut degil.." << endl;
-				goto beden5;
-			}
-		renk5:
-			cout << "etek rengini seciniz:" << endl;
-			cin >> renk;
-			stringstream ss;
-			ss << renk;
-			string s;
-			ss >> s;
-			if (s != "siyah" && s != "mavi" && s != "beyaz") {
-				cout << renk << " rengine ait urun stogu mevcut degil.." << endl;
-				goto renk5;
-			}
-
-			/*myfile1 << etek << " " << boyut << "  " << renk << endl;
-
-			myfile1.close();*/
-			kiyafet kiyafet1(etek, 34, 10.0, boyut, renk);
-			//setReturnKiyafet(kiyafet1);
-
-		}
-		else if (secim == 6) {
-			ayakkabi = new char[15];
-			ayakkabi = "ayakkabi";
-
-			/*ofstream myfile1;
-			myfile1.open("kiyafet1.txt", ios::out | ios::app);*/
-
-			cout << "------------  AYAKKABI -------------\n ";
-			cout << "|beden bilgisi: 36,37,38,39,40      |\n |renk bilgisi: siyah, mavi, beyaz |\n" << endl;
-		beden6:
-			cout << "ayakkabi bedenini seciniz:" << endl;
-			cin >> boyut;
-			stringstream aa;
-			aa << boyut;
-			string a;
-			aa >> a;
-			if (a != "36" && a != "37" && a != "38" && a != "39" && a != "40") {
-				cout << boyut << " bedenine ait urun stogu mevcut degil.." << endl;
-
-				goto beden6;
-			}
-		renk6:
-			cout << "ayakkabi rengini seciniz:" << endl;
-			cin >> renk;
-			stringstream ss;
-			ss << renk;
-			string s;
-			ss >> s;
-			if (s != "siyah" && s != "mavi" && s != "beyaz") {
-				cout << renk << " rengine ait urun stogu mevcut degil.." << endl;
-				goto renk6;
-			}
-
-			/*myfile1 << ayakkabi << " " << boyut << "  " << renk << endl;
-
-			myfile1.close();
-			system("PAUSE");*/
-			kiyafet kiyafet1(ayakkabi, 33, 10.0, boyut, renk);
-			//setReturnKiyafet(kiyafet1);
-		}
 		
+
+		kategori = new char[8];
+
+		cin >> kategori;
+
+		const int line1 = 15;
+		const int size1 = 3;
+		string veri1[line1][size1];
+
+		string inFileName = "C:\\Users\\zeyne\\OneDrive\\Masaüstü\\kategori.txt";
+		ifstream inFile;
+		inFile.open(inFileName.c_str());
+
+		if (inFile.is_open())
+		{
+			for (int i = 0; i < line1; i++)
+			{
+				for (int j = 0; j < size1; j++)
+				{
+					inFile >> veri1[i][j];
+				}
+
+			}
+
+			inFile.close();
+		}
+		else { //Error message
+			cerr << "DOSYA BULUNAMADI!" << inFileName << endl;
+		}
+
+		int urunKontrol = 0;
+		for (int i = 0; i < line1; i++)
+		{
+			string ktg = veri1[i][0];
+			int n = ktg.length();
+			const char* ktgr = new char[n + 1];
+			ktgr = ktg.c_str();
+
+			if (strcmp(kategori, ktgr) == 0) {
+				string fyt = veri1[i][1];
+				fiyat = atof(fyt.c_str());
+				kiyafet_adi = fiyat + 1000;
+
+				toplamFiyat += fiyat;
+				
+
+				urunKontrol = 1;
+			}
+
+		}
+
+		if (urunKontrol == 0)
+		{
+			cout << "Böyle bir urun bulunmamaktadir.Tekrar deneyiniz." << endl;
+			goto menu;
+		}
+
+
+
+
+
+		cout << "|beden bilgisi: S,M,L,XL,XXL,36,37,38,39,40       |\n|renk bilgisi: siyah, mavi, beyaz |\n" << endl;
+
+
+
+	beden1:
+
+		cout << "Beden seciniz : " << endl;
+		boyut = new char[10];
+		cin >> boyut;
+
+
+
+		if ((strcmp(boyut, "s") && strcmp(boyut, "m") && strcmp(boyut, "l") && strcmp(boyut, "xl") && strcmp(boyut, "xxl")&& strcmp(boyut, "S") && strcmp(boyut, "M")
+			&& strcmp(boyut, "L") && strcmp(boyut, "XL") && strcmp(boyut, "XXL") && (strcmp(boyut, "36") && strcmp(boyut, "37") && strcmp(boyut, "38") && strcmp(boyut, "39")
+				&& strcmp(boyut, "40"))) == 1) {
+			cout << boyut << " boyle bir beden mevcut degil.." << endl;
+			goto beden1;
+		}
+
+	renk1:
+
+		cout << "Renk seciniz: " << endl;
+		renk = new char[10];
+		cin >> renk;
+
+		if ((strcmp(renk,"siyah") && strcmp(renk, "mavi") && strcmp(renk, "beyaz"))==1) {
+			cout << renk << " boyle bir renk mevcut degil.." << endl;
+			goto renk1;
+		}
+
+		
+		kiyafet kiyafet1(kategori, kiyafet_adi, fiyat, boyut, renk);
+		
+	    
+		cout << "urun secimine devam etmek icin 1 e siparis vermek icin 0 a basiniz." << endl;
+		cin >> secim;
+		
+	}
+		cout << "FATURALANDIRMA..." << endl;
+		
+		short loop = 0;
+		string line;
+		ifstream myfile("C:\\Users\\zeyne\\OneDrive\\Masaüstü\\kiyafet1.txt");
+		if (myfile.is_open())
+		{
+			while (!myfile.eof())
+			{
+				getline(myfile, line);
+				arraytemp[loop] = line;
+				++loop;
+			}
+
+			myfile.close();
+			remove("C:\\Users\\zeyne\\OneDrive\\Masaüstü\\kiyafet1.txt");
+		}
 
 		else
 		{
-
-			cout << "FATURALANDIRMA..." << endl;
-
-
-
-			string array[1000];
-			short loop = 1;
-			string line;
-			ifstream myfile("kiyafet1.txt");
-			if (myfile.is_open())
-			{
-				while (!myfile.eof())
-				{
-					getline(myfile, line);
-					array[loop] = line;
-					cout << "ID:" << loop << " " << array[loop] << endl;
-					loop++;
-				}
-
-				myfile.close();
-				remove("kiyafet1.txt");
-			}
-			else cout << "can't open the file";
+			cout << "can't open the file";
 			system("PAUSE");
-
-
 		}
+
+		ofstream yazmaDosya("C:\\Users\\zeyne\\OneDrive\\Masaüstü\\fatura.txt", ios::out | ios::app);
+		yazmaDosya << kullanan.getAd_soyad() <<endl;
+		for (int i = 0; i < 10; i++) {
+			yazmaDosya << arraytemp[i] << endl;
+		}
+		yazmaDosya << "Toplam siparis tutariniz: " << toplamFiyat << " TL" << endl << endl<< endl;
 		
-	}
+
+		yazmaDosya.close();
+
 
 
 }
-//void kiyafet::setReturnKiyafet(kiyafet kiyaf) {
-//	kiyafet nesne = kiyaf;
-//
-//}
-//
-//kiyafet kiyafet::getReturnKiyafet() {
-//	return nesne();
-//}
+
+double kiyafet::gettoplamFiyat() {
+	return toplamFiyat;
+}
+
+
+void kiyafet::faturaPrint()
+{
+	string line;
+	ifstream myfile("C:\\Users\\zeyne\\OneDrive\\Masaüstü\\fatura.txt");
+	if (myfile.is_open())
+	{
+		while (!myfile.eof())
+		{
+			getline(myfile, line);
+			cout << line<<endl;
+			
+		}
+
+		myfile.close();
+	}
+
+	else
+	{
+		cout << "can't open the file";
+		system("PAUSE");
+	}
+}
 

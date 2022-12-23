@@ -19,8 +19,8 @@ kullanici::kullanici(const char* k_adSoyad,const char* k_tno,const char* k_ad,
 	setKupon(k_kupon);
 	setTarih(k_tarih);
      
-	ofstream yazmaDosyasi("kullanici.txt" ,ios::out|ios::app);
-	yazmaDosyasi << k_adSoyad << " " <<k_tno<<" "<<k_ad<<" "<<k_email<<" "<<k_adres<<" "<<k_sfr<<" "<<k_tarih<< endl;
+	ofstream yazmaDosyasi("C:\\Users\\zeyne\\OneDrive\\Masaüstü\\kullanicilar.txt" ,ios::out|ios::app);
+	yazmaDosyasi << k_adSoyad << " " <<k_tno<<" "<<k_ad<<" "<<getEposta()<<" "<<k_adres<<" "<<k_sfr<<" "<<"NULL"<<" "<< getTarih() << endl;
 	yazmaDosyasi.close();
 }
 kullanici::kullanici():kisi() {
@@ -42,6 +42,7 @@ char* kullanici::getKullanici_ad()
 }
 void kullanici::setEposta(const char* kullanici_email)
 {
+	
 	slen = strlen(kullanici_email);
 	const regex EpostaPattern("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
 	bool email_kontrol=regex_match(kullanici_email, EpostaPattern);
@@ -54,7 +55,11 @@ void kullanici::setEposta(const char* kullanici_email)
 		}
 	}
 	else {
-		cout << "geçersiz email." << endl;
+		cout << "geçersiz email yeniden giriniz " << endl;
+		char* email= new char[20];
+		cin >> email;
+		setEposta(email);
+
 	}
 
 	
@@ -94,10 +99,10 @@ void kullanici::setK_Sifre(const char* kullanici_sfr)
 			specialChar = true;*/
 	}
 	// Þifre kontrolü
-	cout << "Güçlü þifre kontrolü:-";
+	cout << "Guclu sifre kontrolu:-";
 	if (hasLower && hasUpper && hasDigit &&
 		specialChar && (slen >= 8))
-		cout << "GÜÇLÜ" << endl;
+		cout << "GUCLU" << endl;
 	else if ((hasLower || hasUpper) &&
 		(slen >= 6))
 		cout << "ORTA" << endl;
@@ -144,6 +149,9 @@ void kullanici::setTarih(const char* dTarih)
 	else
 	{
 		cout << "Lütfen geçerli bir tarih giriniz!" << endl;
+		char* tarihe = new char[10];
+		cin >> tarihe;
+		setTarih(tarihe);
 	}
 	
 }
@@ -152,4 +160,22 @@ char* kullanici::getTarih()
 	return dtarihi;
 }
 
-
+void kullanici::setMusteri(const char* ep,const char* sr,const char* trh)
+{
+	slen = strlen(ep);
+	eposta = new char[slen + 1];
+	if (eposta) {
+		strcpy_s(eposta, (slen + 1), ep);
+	}
+	slen = strlen(sr);
+	k_sifre = new char[slen + 1];
+	if (k_sifre) {
+		strcpy_s(k_sifre, (slen + 1), sr);
+	}
+	slen = strlen(trh);
+	dtarihi = new char[slen + 1];
+	if (dtarihi) {
+		strcpy_s(dtarihi, (slen + 1), trh);
+	}
+	
+}

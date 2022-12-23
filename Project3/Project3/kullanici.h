@@ -18,6 +18,7 @@ class kullanici :
        char* getKupon();
        void setTarih(const char*);
        char* getTarih();
+       void setMusteri(const char*,const char*,const char*);
       
    private:
        char* kullanici_ad;

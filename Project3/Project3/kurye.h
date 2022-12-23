@@ -7,11 +7,14 @@ class kurye :
 	public kisi {
 public:
 
-
-	kurye(zaman*, siparis, const char*, const char*);
-	void setKurye_id(int*);
-	void setSiparis_numaralari(siparis);
-	void kuryeSayiGuncel(int);
+	int static count;
+	int static count1;
+	kurye(zaman, siparis, const char*, const char*);
+	kurye();
+	void kuryeEkle();
+	zaman* setDagitim_bitisler(zaman);
+	int* setSiparis_numaralari(siparis);
+	//zaman operator= (const zaman&);
 	//void kuryeMusaitMi(zaman,zaman);//dagitim_bitisler zaman* yapmad?m dziiye atmad???m için
 private:
 
@@ -21,3 +24,4 @@ private:
 
 
 };
+

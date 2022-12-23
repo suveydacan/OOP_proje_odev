@@ -11,116 +11,162 @@
 #include <string.h>
 #include <fstream>
 #include <conio.h> 
+#include <cstdio>
 
 
 using namespace std;
 
-void uyeKaydýFormu();
+void uyeKaydiFormu();
 int yoneticiGiris();
 int musteriGiris();
 void printOneri();
 void OneriYaz();
 void sifreDegistirme();
+void urunGirisi();
+
+
+kiyafet kiyafet1;
+siparis siparis1;
+zaman zaman1;
+kullanici kullanici1;
+
+yonetici yonetici1;
+kurye kurye1;
+
 
 
 int main()
 {
 	setlocale(LC_ALL, "Turkish");
-	kiyafet kiyafet1;
-	siparis siparis1;
-	zaman zaman1;
-	kullanici kullanici1;
-	geri1:
-	cout << "1. sisteme giriþ" << endl << "2. üye kaydý" << endl<< "3. çýkýþ" << endl;
+	/*kiyafet kiyafet11("kadin", 33, 41.00, "m", "mavi");
+	zaman* zaman2;
+	kullanici kullanici11("zeyno","530","zeyy","@gmail","Ortahisar","123","0","0804");
+	siparis sipa("kadin",23,"m","mavi",3,40.0,zaman1,zaman1);
+	sipa.siparisTakip(kiyafet11,kullanici11,zaman1);
+	kurye kuryes(zaman1, sipa, kullanici11.getKullanici_ad(), kullanici11.getTelno());*/
+	
+	anasayfa:
+	cout << "1. sisteme giris" << endl << "2. Uye kaydi" << endl<< "3. cikis" << endl;
 
 	int number;
 	cin >> number;
 	switch (number) {
 	case 1:
-	    geri2:
-		geri3:
-		cout << "1. yönetici giriþi" << endl << "2. müþteri giriþi" << endl << "3.Geri" << endl;
+		sistemG:
+		cout << "1. yönetici girisi" << endl << "2. musteri girisi" << endl << "3.Geri" << endl;
 		int num;
 		cin >> num;
 		switch (num) {
 			case 1:
 			{
+				yoneticii:
 				int n = yoneticiGiris();
 				switch (n) {
-				case 0:
-				{
-					cout << "Kullanýcý adý veya þifre hatalý.Tekrar Deneyiniz!" << endl;
-					yoneticiGiris();
-					break;
-				}
-				case 1:
-					cout << "1.Ürün giriþi" << endl << "2.Kurye ekle" << endl << "3.Þikayet ve Öneri" << endl 
-						<< "4.Ýndirim kodu tanýmla" << endl << "5.Faturalarý görüntüle" << endl;
-					int num;
-					cin >> num;
-					switch (num){
-					case 1:
-					
-						break;
-					case 2:
-						break;
-					case 3:
-						printOneri();
-						break;
-					case 4:
-						break;
-					case 5:
-						break;
-					case 6:
-						goto geri3;
-						break;
-					default:
+					case 0:
+					{
+						cout << "Kullanici adi veya sifre hatali.Tekrar Deneyiniz!" << endl;
+						goto yoneticii;
 						break;
 					}
-					break;
-				default:
-					break;
-				}
+					case 1:
+					{
+						    urunEkle:
+							cout << "\n1.Urun girisi" << endl << "2.Kurye ekle" << endl << "3.Sikayet ve Oneri Gor" << endl
+								<< "4.Indirim kodu tanimla" << endl << "5.Faturalari goruntule" <<endl<<"6.Geri"<< endl;
+							int num;
+							cin >> num;
+							switch (num) {
+							case 1:
+								urunGirisi();
+								goto urunEkle;
+								break;
+							case 2:
+								kurye1.kuryeEkle();
+								goto urunEkle;
+								break;
+							case 3:
+								printOneri();
+								goto urunEkle;
+								break;
+							case 4:
+								yonetici1.indirimTanimla();
+								goto urunEkle;
+								break;
+							case 5:
+								kiyafet1.faturaPrint();
+								goto urunEkle;
+								break;
+							case 6:
+								goto sistemG;
+								break;
+							default:
+								break;
+							}
+							break;
+						default:
+							break;
+					}
 
-				break;
+					   break;
+				}
 			}
 			case 2:
 			{
+			    musterii:
 				int n=musteriGiris();
 				switch(n){
 				case 0:
 				{
-					case2:
-					cout << "Kullanýcý adý veya þifre hatalý.Tekrar Deneyiniz!" << endl;
-					goto case2;
+					
+					cout << "Kullanici adi veya sifre hatali.Tekrar Deneyiniz!" << endl;
+					goto musterii;
 					break;
 				}
 				case 1:
-					cout << "1.Kýyafet kategorisi ve ürün seçimi" << endl << "2.Sipariþ Takip" << endl << "3.Þikayet/Öneri" << endl
-						<< "4.Þifre deðiþtir" << endl << "5.Geri dön" << endl;
+					sipariss:
+					cout << "1.Kiyafet kategorisi ve ürün seçimi" << endl << "2.Siparis Takip" << endl << "3.Sikayet/Öneri paylas" << endl
+						<< "4.Sifre degistir" << endl << "5.Geri dön" << endl;
 					int num;
 					cin >> num;
 					switch (num){
 					case 1:
 					{
-						kiyafet kiyafet1("kadin", 32, 10.0, "small", "kirmizi");
-						kiyafet1.kiyafetMenu();
+						kiyafet1.kiyafetMenu(kullanici1);
 						
-						//kiyafet1.kiyafetMenu();
+						if (kullanici1.getKupon() != "NULL")
+						{
+							cout << "Aktif indirim kuponunuz varsa faturaniza yansitilacaktir. Yoksa standart ucretlendirmeyi goreceksiniz." << endl;
+						}
+						siparis1.siparisFatura(kullanici1, zaman1, kiyafet1);
+						cout << "Indirimli sepet tutariniz: " << (kiyafet1.gettoplamFiyat() - yonetici1.getIndMiktar()) << " TL"<<endl;
+						goto sipariss;
 					}
 						break;
 					case 2:
-						//siparis1.siparisTakip(kiyafet1.getReturnKiyafet(),kullanici1, zaman1);
-
-						break;
+					{
+						int no = 1091;
+						siparis1.setSiparis_no(no);
+						siparis1.siparisTakip(kiyafet1, kullanici1, zaman1);
+						no++;
+						goto sipariss;
+							break;
+							
+					}
 					case 3:
-						OneriYaz();
+					{
+
+						OneriYaz();  //yazmıyor.
+						goto sipariss;
 						break;
+					}
 					case 4:
+					{
 						sifreDegistirme();
+						goto sipariss;
 						break;
+					}
 					case 5:
-						goto geri2;
+						goto sistemG;
 						break;
 					default:
 						break;
@@ -131,13 +177,14 @@ int main()
 				break;
 			}
 			case 3:
-				goto geri1;
+				goto anasayfa;
                 break; 
 			
 		}
 		break;
 	case 2:
-		uyeKaydýFormu();
+		uyeKaydiFormu();
+		goto anasayfa;
 		break;
 	
 	case 3:
@@ -151,7 +198,7 @@ int main()
 	
 	
 }
-void uyeKaydýFormu()
+void uyeKaydiFormu()
 {
 	char* k_ad=new char[15];
 	char* k_tno=new char[15];
@@ -164,13 +211,13 @@ void uyeKaydýFormu()
 
 	
 
-	cout << "üye kaydý için bilgileri giriniz: "<<endl;
+	cout << "uye kaydi icin bilgileri giriniz: "<<endl;
 	cout << "ad-soyad: " << endl;  cin >> k_ad;
 	cout << "telno: " << endl;  cin >> k_tno;                                     //cin.getline(k_tno, sizeof(k_tno));
-	cout << "kullanýcý adý: " << endl; cin >> k_nickname;
+	cout << "kullanici adi: " << endl; cin >> k_nickname;
 	cout << "email: " << endl; cin >> k_mail;
 	cout << "adres: " << endl; cin >> k_adres;
-	cout << "þifre: " << endl; 
+	cout << "sifre: " << endl; 
 	string sifre;
 	int ch;
 	ch = _getch();
@@ -184,11 +231,11 @@ void uyeKaydýFormu()
 
 	char* _sfr = new char[sifre.length() + 1];
 	strcpy_s(_sfr, sifre.size() + 1, sifre.c_str());
-	// do stuff
+	
 
-	cout << "\ndoðum tarihi(gg/aa/yyyy formatýnda giriniz): " << endl; cin >>dt;
+	cout << "\nDogum Tarihi(gg/aa/yyyy formatinda giriniz): " << endl; cin >>dt;
 
-  kullanici nesne(k_ad, k_tno,k_nickname,k_mail,k_adres,_sfr,"0", dt);
+  kullanici nesne(k_ad, k_tno,k_nickname,k_mail,k_adres,_sfr,"NULL", dt);
 	
    
 
@@ -196,11 +243,11 @@ void uyeKaydýFormu()
 int yoneticiGiris()
 {
 	const int LINE = 20;
-	const int SIZE = 7;
+	const int SIZE = 8;
 	string veri[LINE][SIZE];
 
 
-	string inFileName = "kullanici.txt";
+	string inFileName = "C:\\Users\\zeyne\\OneDrive\\Masaüstü\\kullanicilar.txt";
 	ifstream inFile;
 	inFile.open(inFileName.c_str());
 
@@ -224,9 +271,10 @@ int yoneticiGiris()
 	string sifre="";
 	string adSoyad = "";
 	int bayrak1 = 0,bayrak2=0;
+	int line ;
 
 	cout << "Ad-Soyad :"; cin >> adSoyad; cout << endl;
-	cout << "Þifre :"; 
+	cout << "Sifre :"; 
 	int ch;
 	ch = _getch();
 	while (ch != 13)
@@ -241,6 +289,7 @@ int yoneticiGiris()
 	{
 		if (sifre == veri[i][2])
 		{
+			line = i;
 			bayrak1 = 1;
 		
 		}
@@ -255,7 +304,22 @@ int yoneticiGiris()
 	}
 	if (bayrak1 == 1 && bayrak2==1)
 	{
-		cout << "Baþarýlý Giriþ" << endl;
+		cout << "Basarili Giris" << endl;
+		
+		string st = veri[line][0];
+		const char* str = st.c_str();
+		yonetici1.setAd_soyad(str);
+
+
+		string st1 = veri[line][1];
+		const char* str1 = st1.c_str();
+		yonetici1.setTelno(str1);
+
+
+		string st2 = veri[line][2];
+		const char* str2 = st2.c_str();
+		yonetici1.setSifre(str2);
+
 		return 1;
 	}
 	else
@@ -267,11 +331,11 @@ int yoneticiGiris()
 int musteriGiris()
 {
 	const int LINE = 20;
-	const int SIZE = 7;
+	const int SIZE = 8;
 	string veri[LINE][SIZE];
 
 
-	string inFileName = "kullanici.txt";
+	string inFileName = "C:\\Users\\zeyne\\OneDrive\\Masaüstü\\kullanicilar.txt";
 	ifstream inFile;
 	inFile.open(inFileName.c_str());
 
@@ -297,7 +361,7 @@ int musteriGiris()
 	int bayrak1 = 0, bayrak2 = 0;
 	int line;
 
-	cout << "Kullanýcý Adý : ";  cin >> name; cout << endl;
+	cout << "Kullanici Adi : ";  cin >> name; cout << endl;
 	cout << "Þifre : ";  
 	int ch;
 	ch = _getch();
@@ -329,8 +393,58 @@ int musteriGiris()
 	}
 	if (bayrak1 ==1 && bayrak2==1)
 	{
-		cout << "Başarılı Giriş"<<endl;
-	//	kullanici nesne(veri[line][0], veri[line][1],veri[line][2], veri[line][3], veri[line][4], veri[line][5], "0", veri[line][6]);
+		cout << "Basarili Giris"<<endl;
+
+		string st = veri[line][0];
+		const char* str = st.c_str();
+		kullanici1.setAd_soyad(str);
+
+		
+
+
+		string st1 = veri[line][1];
+		const char* str1 = st1.c_str();
+		kullanici1.setTelno(str1);
+
+		
+
+
+		string st2 = veri[line][2];
+		const char* str2 = st2.c_str();
+		kullanici1.setKullanici_ad(str2);
+
+	
+
+
+		string st3 = veri[line][3];
+		const char* str3 = st3.c_str();
+		
+
+
+		string st4 = veri[line][4];
+		const char* str4 = st4.c_str();
+		kullanici1.setAdres_ilce(str4);
+
+		
+
+		string st5 = veri[line][5];
+		const char* str5 = st5.c_str();
+		
+		
+
+		
+		string st6 = veri[line][6];
+		const char* str6 = st6.c_str();
+		kullanici1.setKupon(str6);
+
+		
+		string st7 = veri[line][7];
+		const char* str7 = st7.c_str();
+
+		kullanici1.setMusteri(str3, str5,str7);
+
+	
+		
 		return 1;
 	}
 	else
@@ -342,7 +456,7 @@ int musteriGiris()
 }
 void printOneri()
 {
-	ifstream dosyaOku("oneri.txt");
+	ifstream dosyaOku("C:\\Users\\zeyne\\OneDrive\\Masaüstü\\oneri.txt");
 
 
 	string satir = "";
@@ -361,13 +475,19 @@ void printOneri()
 }
 void OneriYaz()
 {
-	string oneri = "";
-	cout << "þikayet/öneri yazýnýz:" <<endl;
+	string oneri ;
+	cout << "sikayet/oneri yaziniz:" <<endl;
 	getline(cin, oneri); //burayý atlýyor??
-	cout <<"yazdýðýnýz öneri:" << oneri;
+	cout <<"yazdiginiz oneri:" << oneri;
+
+	/*char oneri[1000];
+	cout << "sikayet/oneri yaziniz: ";
+	gets(oneri);*/
+
+	
 
 
-	ofstream DosyaYazma("oneri.txt", ios::out | ios::app);
+	ofstream DosyaYazma("C:\\Users\\zeyne\\OneDrive\\Masaüstü\\oneri.txt", ios::out | ios::app);
 	DosyaYazma <<oneri ;
 	DosyaYazma.close();
 
@@ -375,18 +495,18 @@ void OneriYaz()
 
 void sifreDegistirme()
 {
-	cout << "Lütfen þifre deðiþikliði için eposta adresinizi doðrulayýn"<<endl;
-	cout << "Eposta adresinini giriniz:"<<endl;
+	cout << "Lutfen sifre degisikligi icin eposta adresinizi dogrulayin" << endl;
+	cout << "Eposta adresinini giriniz:" << endl;
 	string eposta = "";
 	cin >> eposta;
-	
+
 
 	const int LINE = 20;
-	const int SIZE = 7;
+	const int SIZE = 8;
 	string veri[LINE][SIZE];
 
 
-	string inFileName = "kullanici.txt";
+	string inFileName = "C:\\Users\\zeyne\\OneDrive\\Masaüstü\\kullanicilar.txt";
 	ifstream inFile;
 	inFile.open(inFileName.c_str());
 
@@ -408,7 +528,7 @@ void sifreDegistirme()
 	}
 
 	int kontrol1 = 0;
-	int line=0;
+	int line = 0;
 
 	for (int i = 0; i < LINE; i++)
 	{
@@ -420,31 +540,56 @@ void sifreDegistirme()
 	}
 	if (kontrol1 != 1)
 	{
-		cout << "Epostanýzý kontrol ediniz!" << endl;
+		cout << "Epostanizi kontrol ediniz!" << endl;
 	}
 
-	
 
-	cout << "Yeni þifrenizi giriniz: "<<endl;
-	string yeniSifre = "";
-	int ch;
-	ch = _getch();
-	while (ch != 13)
+	if (kontrol1 == 1) {
+		cout << "Yeni sifrenizi giriniz: " << endl;
+		string yeniSifre = "";
+		cin >> yeniSifre;
+
+		veri[line][5] = yeniSifre;
+	}
+
+	ofstream DosyaYazma("C:\\Users\\zeyne\\OneDrive\\Masaüstü\\kullanicilar1.txt");
+	if (DosyaYazma.is_open())
 	{
-		yeniSifre.push_back(ch);
-		cout << '*';
-		ch = _getch();
+		for (int i = 0; i < LINE; i++)
+		{
+			for (int j = 0; j < SIZE; j++) {
+				DosyaYazma << veri[i][j] << " ";
+			}
+			DosyaYazma << endl;
+		}
 	}
-	cout << endl;
-	
-	veri[line][5] = yeniSifre;
+
+	DosyaYazma.close();
+
+	cout << "sifreniz basariyla degistirildi."<<endl;
+
+	remove("C:\\Users\\zeyne\\OneDrive\\Masaüstü\\kullanicilar.txt");
+	rename("C:\\Users\\zeyne\\OneDrive\\Masaüstü\\kullanicilar1.txt", "C:\\Users\\zeyne\\OneDrive\\Masaüstü\\kullanicilar.txt");
 
 }
 
+void urunGirisi()
+{
+	
+	cout << "Eklemek istediginiz urunu giriniz :";
+	string urun;
+	cin >> urun;
+	double fiyat;
+	cout << "\nUrunun fiyatini yaziniz :";
+	cin >> fiyat;
 
+	ofstream yazmaDosyasi("C:\\Users\\zeyne\\OneDrive\\Masaüstü\\kategori.txt", ios::out | ios::app);
+	yazmaDosyasi <<urun<<" "<<fiyat<<" TL" << endl;
 
+	
+	yazmaDosyasi.close();
 
-
+}
 
 
 
