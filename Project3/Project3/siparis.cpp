@@ -4,9 +4,10 @@
 #include "kiyafet.h"
 #include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
 
-int siparis::kuryeSayisi = 5;
+int siparis::kuryeSayisi = 2;
 siparis::siparis(const char* kategor, int kiyaf_ad, const char* size, const char* color, int sn, double sf, zaman baslangic, zaman ulasim) //başlangıcı get fonk ile saat mi vercez?
 	:kiyafet(kategor, kiyaf_ad, sf, size, color), siparis_baslangic(baslangic.getZaman()), siparis_ulasim(ulasim.getSiparisTeslimSaati())
 
@@ -65,16 +66,34 @@ void siparis::siparisFatura(kullanici kullanan, zaman tarih, kiyafet bilgiler) {
 void siparis::siparisTakip(kiyafet kiyafeti, kullanici kullanicisi, zaman zamani) {
 
 	cout << getSiparis_no() << " numarali siparisiniz alinmistir." << endl;
-	cout << kiyafeti.getKiyafet_adi() << "\n"
-		<< "size: " << kiyafeti.getBoyut() << "\n"
-		<< "Renk: " << kiyafeti.getRenk() << "\n"
-		<< kiyafeti.getFiyat()
-		<< endl;
+	string line;
+	const int line1 = 10;
+	int loop = 0;
+	string veri2[line1];
+	ifstream myfile("C:\\Users\\zeyne\\OneDrive\\Masaüstü\\kurye.txt");
+	if (myfile.is_open())
+	{
+		while (!myfile.eof())
+		{
+			getline(cin, line);
+			veri2[loop] = line;
+			loop++;
+		}
+
+		myfile.close();
+	}
+
+	else
+	{
+		cout << "can't open the file";
+		system("PAUSE");
+	}
+	
 
 	const char* adres = kullanicisi.getAdres_ilce();
 	if (siparis::kuryeSayisi > 0) {
 		if (strcmp(adres, "Ortahisar") == 0) {
-			cout << " Bilgileri belirtilen siparisiniz 35 dk içerisinde teslim edilecektir." << endl;
+			cout << "Kuryeniz " << veri2[siparis::kuryeSayisi]<<" tarafindan bilgileri belirtilen siparisiniz 35 dk içerisinde teslim edilecektir." << endl;
 			siparis::kuryeSayisi--;
 			cout << "kurye sayisi:" << siparis::kuryeSayisi << endl;
 			zaman a(0, 35);
@@ -82,38 +101,56 @@ void siparis::siparisTakip(kiyafet kiyafeti, kullanici kullanicisi, zaman zamani
 		}
 		else if (strcmp(adres, "Akcaabat") == 0)
 		{
-			cout << " Bilgileri belirtilen siparisiniz 50 dk içerisinde teslim edilecektir." << endl;
+			cout << "Kuryeniz "<< veri2[siparis::kuryeSayisi]<<" tarafindan bilgileri belirtilen siparisiniz 50 dk içerisinde teslim edilecektir." << endl;
 			siparis::kuryeSayisi--;
+			cout << "kurye sayisi:" << siparis::kuryeSayisi << endl;
+			zaman a(0, 50);
+			zamani.siparisTeslimSaati(a);
 		}
 		else if (strcmp(adres, "Vakfikebir") == 0)
 		{
-			cout << " Bilgileri belirtilen siparisiniz 90 dk içerisinde teslim edilecektir." << endl;
+			cout << "Kuryeniz " << veri2[siparis::kuryeSayisi] << " tarafindan bilgileri belirtilen siparisiniz 90 dk içerisinde teslim edilecektir." << endl;
 			siparis::kuryeSayisi--;
+			cout << "kurye sayisi:" << siparis::kuryeSayisi << endl;
+			zaman a(0, 90);
+			zamani.siparisTeslimSaati(a);
 		}
 		else if (strcmp(adres, "Besikduzu") == 0)
 		{
-			cout << " Bilgileri belirtilen siparisiniz 110 dk içerisinde teslim edilecektir." << endl;
+			cout << "Kuryeniz " << veri2[siparis::kuryeSayisi] << " tarafindan bilgileri belirtilen siparisiniz 110 dk içerisinde teslim edilecektir." << endl;
 			siparis::kuryeSayisi--;
+			cout << "kurye sayisi:" << siparis::kuryeSayisi << endl;
+			zaman a(0, 110);
+			zamani.siparisTeslimSaati(a);
 		}
 		else if (strcmp(adres, "Yomra") == 0)
 		{
-			cout << " Bilgileri belirtilen siparisiniz 55 dk içerisinde teslim edilecektir." << endl;
+			cout << "Kuryeniz " << veri2[siparis::kuryeSayisi] << " tarafindan bilgileri belirtilen siparisiniz 55 dk içerisinde teslim edilecektir." << endl;
 			siparis::kuryeSayisi--;
+			cout << "kurye sayisi:" << siparis::kuryeSayisi << endl;
+			zaman a(0, 55);
+			zamani.siparisTeslimSaati(a);
 		}
 		else if (strcmp(adres, "Arsin") == 0)
 		{
-			cout << " Bilgileri belirtilen siparisiniz 70 dk içerisinde teslim edilecektir." << endl;
+			cout << "Kuryeniz " << veri2[siparis::kuryeSayisi] << " tarafindan bilgileri belirtilen siparisiniz 70 dk içerisinde teslim edilecektir." << endl;
 			siparis::kuryeSayisi--;
+			cout << "kurye sayisi:" << siparis::kuryeSayisi << endl;
+			zaman a(0, 70);
+			zamani.siparisTeslimSaati(a);
 		}
 		else if (strcmp(adres, "Arakli") == 0)
 		{
-			cout << " Bilgileri belirtilen siparisiniz 100 dk içerisinde teslim edilecektir." << endl;
+			cout << "Kuryeniz " << veri2[siparis::kuryeSayisi] << " tarafindan bilgileri belirtilen siparisiniz 100 dk içerisinde teslim edilecektir." << endl;
 			siparis::kuryeSayisi--;
+			cout << "kurye sayisi:" << siparis::kuryeSayisi << endl;
+			zaman a(0, 100);
+			zamani.siparisTeslimSaati(a);
 		}
 		else {
 			cout << "Hizmet verdigimiz bölgenin disindasiniz" << endl;
 		}
-		if (kuryeSayisi == 0)
+		if (siparis::kuryeSayisi == 0)
 			cout << "Uygun kurye bulunmadığı için siparisiniz siraya alinmistir." << endl;
 
 	}

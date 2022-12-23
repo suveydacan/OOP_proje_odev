@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <string.h>
+#include "kullanici.h"
 class kiyafet
 {
 public:
@@ -18,10 +19,11 @@ public:
 	void setRenk(const char*);
 	int len()const;
 	void print()const;
-	/*void setReturnKiyafet(kiyafet);
-	kiyafet getReturnKiyafet();*/
+	double gettoplamFiyat();
+	void faturaPrint();
+	
 
-	void kiyafetMenu();
+	void kiyafetMenu(kullanici);
 private:
 	char* kategori;
 	int kiyafet_adi;
@@ -30,17 +32,10 @@ private:
 	char* renk;
 	int slen;
 
-	const char* elbise;
-	const char* tisort;
-	const char* pantolon;
-	const char* gomlek;
-	const char* etek;
-	const char* ayakkabi;
-	const char* satir;
 
-	//kiyafet nesne();
+	
+	double toplamFiyat=0.0;
 
-	//int argc;
-	//char* argv[];
+	
 };
 

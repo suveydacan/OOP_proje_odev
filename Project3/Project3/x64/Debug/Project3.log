@@ -1,5 +1,12 @@
-﻿  kiyafet.cpp
-D:\zoom\OOP_proje_odev\Project3\Project3\kiyafet.cpp(24,26): warning C4267: '=': 'size_t' - 'int' dönüşümü; veri kaybı olabilir
-D:\zoom\OOP_proje_odev\Project3\Project3\kiyafet.cpp(39,20): warning C4267: '=': 'size_t' - 'int' dönüşümü; veri kaybı olabilir
-D:\zoom\OOP_proje_odev\Project3\Project3\kiyafet.cpp(47,20): warning C4267: '=': 'size_t' - 'int' dönüşümü; veri kaybı olabilir
-  Project3.vcxproj -> D:\zoom\OOP_proje_odev\Project3\x64\Debug\Project3.exe
+﻿  kullanici.cpp
+C:\Users\zeyne\OneDrive\Masaüstü\OOP_proje_odev\Project3\Project3\kullanici.cpp(32,22): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\zeyne\OneDrive\Masaüstü\OOP_proje_odev\Project3\Project3\kullanici.cpp(46,32): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\zeyne\OneDrive\Masaüstü\OOP_proje_odev\Project3\Project3\kullanici.cpp(73,32): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\zeyne\OneDrive\Masaüstü\OOP_proje_odev\Project3\Project3\kullanici.cpp(86,30): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\zeyne\OneDrive\Masaüstü\OOP_proje_odev\Project3\Project3\kullanici.cpp(125,32): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\zeyne\OneDrive\Masaüstü\OOP_proje_odev\Project3\Project3\kullanici.cpp(138,23): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\zeyne\OneDrive\Masaüstü\OOP_proje_odev\Project3\Project3\kullanici.cpp(139,27): warning C4129: '/': unrecognized character escape sequence
+C:\Users\zeyne\OneDrive\Masaüstü\OOP_proje_odev\Project3\Project3\kullanici.cpp(165,19): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\zeyne\OneDrive\Masaüstü\OOP_proje_odev\Project3\Project3\kullanici.cpp(170,19): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\zeyne\OneDrive\Masaüstü\OOP_proje_odev\Project3\Project3\kullanici.cpp(175,20): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  Project3.vcxproj -> C:\Users\zeyne\OneDrive\Masaüstü\OOP_proje_odev\Project3\x64\Debug\Project3.exe

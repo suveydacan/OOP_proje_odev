@@ -147,8 +147,8 @@ zaman zaman::operator+ (const  zaman& zamanlama) {
 
     int hour = this->saat + zamanlama.saat;
     int minute = this->dakika + zamanlama.dakika;
-    if (minute >= 60 || dakika + minute >= 60) {//toplam 120 dk da olabilir 2 kere artırmak gerekir
-        hour = hour + (dakika + minute) / 60;
+    if (minute >= 60 ) {//toplam 120 dk da olabilir 2 kere artırmak gerekir
+        hour = hour + ( minute) / 60;
         minute = (minute) % 60;
     }
     else {
